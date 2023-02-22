@@ -1,0 +1,5 @@
+string username = Request["username"];
+string password = Request["password"];
+string sql = "SELECT * FROM Users WHERE Username = '" + username + "' AND Password = '" + password + "'";
+SqlCommand cmd = new SqlCommand(sql, conn);
+SqlDataReader reader = cmd.ExecuteReader();
