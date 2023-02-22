@@ -1,0 +1,16 @@
+from flask import Flask, request, render_template_string
+
+app = Flask(__name__)
+
+@app.route('/search')
+def search():
+    query = request.args.get('q')
+    results = get_results_from_database(query)
+    html = '<ul>'
+    for result in results:
+        html += '<li>' + result['title'] + '</li>'
+    html += '</ul>'
+    return render_template_string(html)
+
+if __name__ == '__main__':
+    app.run()
